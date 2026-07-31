@@ -1,4 +1,4 @@
-# 🍽️ Food Ordering Website
+# 🍽️ ONLINE FOOD ORDERING SYSTEM
 
 A simple and user-friendly **Food Ordering Website** developed using **HTML, CSS, and PHP**. This project allows users to browse dishes, register, and place food orders through an intuitive interface.
 
