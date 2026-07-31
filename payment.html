@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Payment Gateway</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url(images/background.png);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .payment-container {
+        background-color: #FFEB9C;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        text-align: center;
+        border: 2px solid;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+    }
+
+    .payment-method {
+        margin-bottom: 15px;
+        text-align: left;
+    }
+
+    .payment-method input {
+        margin-right: 10px;
+    }
+
+    button {
+        background-color: #F8BD47;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #F4A811;
+    }
+    </style>
+</head>
+<body>
+    <div class="payment-container">
+        <h2>Select Your Payment Method</h2>
+        <form id="payment-form" action="payment.php" method="POST">
+            <div class="payment-method">
+                <input type="radio" id="CashOnDelivery" name="payment_method" value="Cash On Delivery" checked>
+                <label for="CashOnDelivery">Cash On Delivery</label>
+            </div>
+            
+            <div class="payment-method">
+                <input type="radio" id="upi" name="payment_method" value="UPI">
+                <label for="upi">UPI (GooglePay, PhonePe)</label>
+            </div>
+            
+            <div class="payment-method">
+                <input type="radio" id="card" name="payment_method" value="Card">
+                <label for="card">Card</label>
+            </div>
+            
+            <button type="submit">Proceed to Payment</button>
+        </form>
+    </div>
+
+    <script>
+        function getQueryParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+        window.onload = function() {
+            const customer_id = getQueryParameter('customer_id');
+            if (customer_id) {
+                const form = document.getElementById('payment-form');
+                const hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = 'customer_id';
+                hiddenInput.value = customer_id;
+                form.appendChild(hiddenInput);
+            } else {
+                alert('Customer ID is missing!');
+            }
+        };
+    </script>
+</body>
+</html>
