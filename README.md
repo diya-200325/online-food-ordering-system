@@ -1,67 +1,206 @@
+# 🍽️ Foodio – Online Food Ordering System
 
-🍽️ Foodio — Online Food Ordering System
-A full-stack web application built using PHP and MySQL that handles user registration, interactive menu browsing, server-side order calculation, and payment selection.
-✨ Features
- * 🏠 Interactive Home Page: Clean landing page with intuitive navigation.
- * 👤 Secure User Registration: Collects customer details and saves them directly into MySQL using prepared statements to prevent SQL injection.
- * 🍕 Dynamic Menu & Ordering: Displays items (Biriyani, Mandhi, Fried Chicken) with server-side price calculation and quantity validation.
- * 🛒 Relational Order Handling: Stores order details linked to customer records using relational foreign keys.
- * 💳 Payment Selection: Supports multiple payment options (Cash on Delivery, UPI, Card) and updates order statuses in real-time.
- * ✅ Order Confirmation: Clear final confirmation screen linking back to the home page.
-🛠️ Tech Stack & Concepts
- * Frontend: HTML5, CSS3, JavaScript (DOM Manipulation & URL Parameters)
- * Backend: PHP (Server-Side Logic & Form Processing)
- * Database: MySQL (Relational Schema Design & Foreign Keys)
- * Server Environment: Apache / XAMPP
-📂 Project Structure
+A full-stack web application built with **PHP** and **MySQL** that enables users to register, browse a food menu, place orders, and select payment methods. The project demonstrates secure backend development, relational database design, and dynamic server-side order processing.
+
+---
+
+## ✨ Features
+
+* 🏠 **Interactive Home Page** – Simple and user-friendly landing page with easy navigation.
+* 👤 **Secure User Registration** – Stores customer information in MySQL using **prepared statements** to prevent SQL injection.
+* 🍕 **Dynamic Menu & Ordering** – Browse available dishes, select quantities, and calculate prices securely on the server.
+* 🛒 **Relational Order Management** – Maintains customer and order relationships using MySQL foreign keys.
+* 💳 **Payment Selection** – Supports multiple payment methods including Cash on Delivery, UPI, and Card.
+* 📦 **Order Confirmation** – Displays a confirmation page after successful order placement.
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+* HTML5
+* CSS3
+* JavaScript (DOM Manipulation & URL Parameters)
+
+### Backend
+
+* PHP
+
+### Database
+
+* MySQL
+
+### Server
+
+* Apache (XAMPP/WAMP)
+
+---
+
+## 📂 Project Structure
+
+```text
 Food-Ordering-Website/
-│── database/
-│   └── schema.sql             # Database script (Tables & seed data)
-│── images/                     # UI graphics & food images
-│── style.css                   # Global styling
-│── Firstpage.html              # Landing page
-│── Food.html                   # Secondary homepage / navigation
-│── Signup.html                 # Registration UI
-│── Signup.php                  # Registration backend (Prepared Statements)
-│── Dishes.html                 # Food selection & quantity input
-│── act.php                     # Order processing & price calculation
-│── Payment.html                # Payment method choice UI
-│── Payment.php                 # Payment status updater backend
-│── orderconfirment.html        # Order confirmation page
-└── README.md                   # Project documentation
+│
+├── database/
+│   └── schema.sql
+├── images/
+├── style.css
+├── Firstpage.html
+├── Food.html
+├── Signup.html
+├── Signup.php
+├── Dishes.html
+├── act.php
+├── Payment.html
+├── Payment.php
+├── orderconfirment.html
+└── README.md
+```
 
-🗄️ Database Setup (MySQL)
-This project uses a relational database named foodorder with three main tables:
- * users: Stores customer profiles (customer_id, first_name, phone, address).
- * food_details: Stores available dishes and prices (food_id, food_name, price).
- * orders: Tracks order history linked via foreign keys (customer_id, food_id, total_price, payment_method).
-🚀 How to Run the Project
- * Install XAMPP (or WAMP) on your system.
- * Clone or copy this repository into your XAMPP htdocs folder:
-   C:/xampp/htdocs/Food-Ordering-Website/
+---
 
- * Start Apache and MySQL from the XAMPP Control Panel.
- * Import Database:
-   * Open your browser and go to http://localhost/phpmyadmin/.
-   * Create a new database named foodorder.
-   * Click Import, select database/schema.sql from the project folder, and click Go.
- * Launch Application:
-   * Open your browser and visit:
-   http://localhost/Food-Ordering-Website/Firstpage.html
+## 🗄️ Database Schema
 
-🔒 Backend & Security Highlights
- * SQL Injection Protection: Uses MySQLi $stmt->bind_param() prepared statements during registration.
- * Data Integrity: Employs MySQL Foreign Key constraints (ON DELETE CASCADE) to preserve relationships between users, items, and orders.
- * Dynamic Price Validation: Calculates $total_price = quantity * price on the server side instead of trusting frontend values.
-🎯 Key Learning Outcomes
- * Designing relational database schemas in MySQL.
- * Connecting PHP to MySQL using mysqli_connect and executing CRUD queries.
- * Handling parameterized inputs for secure database transactions.
- * Passing state across web pages using HTTP POST requests and URL search parameters.
- * Integrating frontend layouts with backend data pipelines.
-🔮 Future Enhancements
- * 🔑 User Login & Session Authentication (PHP $_SESSION & password hashing)
- * 🛒 Persistent Shopping Cart using LocalStorage
- * 💳 Live Third-Party Payment Gateway Integration (Razorpay / Stripe API)
- * 👨‍🍳 Admin Dashboard for updating menu prices and viewing live orders
- * 📱 Fully Responsive Mobile Design
+The project uses a MySQL database named **foodorder** with the following tables:
+
+### **users**
+
+Stores customer information.
+
+| Column      | Description      |
+| ----------- | ---------------- |
+| customer_id | Primary Key      |
+| first_name  | Customer Name    |
+| phone       | Phone Number     |
+| address     | Customer Address |
+
+### **food_details**
+
+Stores available menu items.
+
+| Column    | Description |
+| --------- | ----------- |
+| food_id   | Primary Key |
+| food_name | Food Name   |
+| price     | Food Price  |
+
+### **orders**
+
+Stores order details.
+
+| Column         | Description    |
+| -------------- | -------------- |
+| order_id       | Primary Key    |
+| customer_id    | Foreign Key    |
+| food_id        | Foreign Key    |
+| total_price    | Order Total    |
+| payment_method | Payment Option |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+* XAMPP or WAMP
+* PHP
+* MySQL
+
+### Installation
+
+1. Clone the repository.
+
+```bash
+git clone https://github.com/your-username/Food-Ordering-Website.git
+```
+
+2. Move the project into the **htdocs** folder.
+
+```text
+C:/xampp/htdocs/Food-Ordering-Website/
+```
+
+3. Start **Apache** and **MySQL** using the XAMPP Control Panel.
+
+4. Open **phpMyAdmin**.
+
+5. Create a database named:
+
+```text
+foodorder
+```
+
+6. Import the SQL file located at:
+
+```text
+database/schema.sql
+```
+
+7. Open your browser and visit:
+
+```text
+http://localhost/Food-Ordering-Website/Firstpage.html
+```
+
+---
+
+## 🔒 Security Highlights
+
+* ✅ Prepared Statements (`mysqli` + `bind_param()`) to prevent SQL injection.
+* ✅ Server-side price calculation for accurate order totals.
+* ✅ Quantity validation before processing orders.
+* ✅ Foreign key constraints to maintain database integrity.
+
+---
+
+## 📚 Learning Outcomes
+
+This project demonstrates:
+
+* Relational database schema design in MySQL.
+* PHP and MySQL integration using `mysqli`.
+* CRUD operations with secure parameterized queries.
+* Server-side form processing.
+* Data flow using HTTP POST requests and URL parameters.
+* Building a complete full-stack web application.
+
+---
+
+## 📸 Screenshots
+
+Add screenshots of:
+
+* Home Page
+* Registration Page
+* Menu Page
+* Order Page
+* Payment Page
+* Order Confirmation Page
+
+---
+
+## 🔮 Future Enhancements
+
+* 🔑 User Login & Session Authentication
+* 🔒 Password Hashing
+* 🛒 Persistent Shopping Cart
+* 💳 Razorpay / Stripe Payment Gateway Integration
+* 👨‍🍳 Admin Dashboard
+* 📦 Order Tracking
+* ⭐ Ratings & Reviews
+* 📱 Fully Responsive Mobile Design
+
+---
+
+## 👩‍💻 Author
+
+**Diya Soyi**
+
+B.Tech in Information Technology
+
+---
+
+## 📄 License
+
+This project is developed for educational and learning purposes.
