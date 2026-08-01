@@ -167,18 +167,7 @@ This project demonstrates:
 
 ---
 
-## 📸 Screenshots
 
-Add screenshots of:
-
-* Home Page
-* Registration Page
-* Menu Page
-* Order Page
-* Payment Page
-* Order Confirmation Page
-
----
 
 ## 🔮 Future Enhancements
 
